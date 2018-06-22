@@ -1,0 +1,10 @@
+{
+  "name": "poemy",
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "dependencies": {
+    "npm": "^6.1.0",
+    "nuxt": "^1.4.1"
+  }
+}
