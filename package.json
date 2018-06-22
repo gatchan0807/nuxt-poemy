@@ -1,7 +1,8 @@
 {
   "name": "poemy",
   "scripts": {
-    "dev": "nuxt"
+    "dev": "nuxt",
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "npm": "^6.1.0",
