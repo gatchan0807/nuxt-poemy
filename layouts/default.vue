@@ -1,8 +1,22 @@
 <template>
   <div>
+    <common-header/>
     <nuxt/>
+    <common-footer/>
   </div>
 </template>
+
+<script>
+  import CommonHeader from '~/components/common/CommonHeader.vue'
+  import CommonFooter from '~/components/common/CommonFooter.vue'
+
+  export default {
+    components: {
+      CommonHeader,
+      CommonFooter,
+    }
+  }
+</script>
 
 <style>
 html {
