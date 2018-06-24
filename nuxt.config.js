@@ -35,6 +35,9 @@ module.exports = {
       }
     }
   },
+  router: {
+    middleware: "log"
+  },
   /*
   ** PWA Config
   */
