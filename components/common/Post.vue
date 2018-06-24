@@ -7,7 +7,13 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
+
   export default {
+    computed: mapGetters({
+      poems: 'poems/all'
+    }),
+
     name: 'post',
     data() {
       return {
@@ -17,11 +23,12 @@
     },
     methods: {
       submit: function () {
-        console.log(this.value)
+        this.$store.commit('poems/add', {contents: this.value})
+        console.log(this.poems)
       },
       count: function () {
         this.counter = this.value.length
-      }
+      },
     }
   }
 </script>
