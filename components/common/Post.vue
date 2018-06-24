@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <textarea v-model="value" name="post" id="post" cols="30" rows="10" @keyup="count"></textarea>
+  <div class="field">
+    <textarea class="textarea is-primary" v-model="value" name="post" id="post" @keyup="count"></textarea>
     <span>{{counter}}</span>
-    <button @click="submit">詩う</button>
+    <button @click="submit" class="button is-primary">詩う</button>
   </div>
 </template>
 
