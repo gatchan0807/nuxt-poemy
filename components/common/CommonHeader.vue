@@ -1,13 +1,19 @@
 <template>
-    <header>
-      Header
-    </header>
+  <header>
+    Header
+    <post></post>
+  </header>
 </template>
 
 <script>
-    export default {
-        name: "common-header"
+  import Post from '~/components/common/Post'
+
+  export default {
+    name: "common-header",
+    components: {
+      Post
     }
+  }
 </script>
 
 <style scoped>
