@@ -34,5 +34,15 @@ module.exports = {
         })
       }
     }
+  },
+  /*
+  ** PWA Config
+  */
+  modules: [
+    '@nuxtjs/pwa'
+  ],
+  manifest: {
+    name: 'Poemy',
+    lang: 'ja'
   }
 }

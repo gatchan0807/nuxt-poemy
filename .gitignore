@@ -12,3 +12,6 @@ dist
 
 # Webstorm settings
 .idea
+
+# Service Worker
+sw.*
