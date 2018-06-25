@@ -8,7 +8,7 @@ export const state = () => ({
   list: [],
 })
 
-export const mutations = {
+export const actions = {
   async add(state, poem) {
     const p = {
       id: shortId.generate(),
@@ -16,7 +16,7 @@ export const mutations = {
       timestamp: Math.floor(moment().format('x') / 1000)
     }
 
-    state.list.push(p)
+    state.commit('add', p)
 
     let data = {}
 
@@ -25,9 +25,13 @@ export const mutations = {
     } catch (e) {
       console.log(e)
     }
+  },
+}
 
-    console.log(data)
-  }
+export const mutations = {
+  add(state, p) {
+    state.list.push(p)
+  },
 }
 
 export const getters = {

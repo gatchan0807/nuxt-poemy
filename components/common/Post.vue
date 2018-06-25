@@ -23,8 +23,7 @@
     },
     methods: {
       submit: function () {
-        this.$store.commit('poems/add', {contents: this.value})
-        console.log(this.poems)
+        this.$store.dispatch('poems/add', {contents: this.value})
       },
       count: function () {
         this.counter = this.value.length
