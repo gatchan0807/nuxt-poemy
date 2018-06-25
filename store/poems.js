@@ -22,8 +22,10 @@ export const actions = {
 
     try {
       data = await axios.post(BASE_URL + '/poems', p)
+      return data
     } catch (e) {
       console.log(e)
+      throw e
     }
   },
 }
