@@ -10,10 +10,10 @@
   import { mapGetters } from 'vuex'
 
   export default {
+    name: 'post',
     computed: mapGetters({
       poems: 'poems/all'
     }),
-    name: 'post',
     data() {
       return {
         value: '',
