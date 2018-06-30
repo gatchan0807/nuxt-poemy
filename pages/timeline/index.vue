@@ -12,18 +12,13 @@
   import { mapGetters } from 'vuex'
 
   export default {
-    computed: {
-      ...mapGetters({
-        poems: 'poems/all'
-      })
-    },
-    mounted: function () {
-      console.log(this.poems)
-    },
+    computed: mapGetters({
+      poems: 'poems/all'
+    }),
     name: 'index',
     data() {
+      return {}
     }
-
   }
 </script>
 
