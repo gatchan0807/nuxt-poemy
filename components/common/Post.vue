@@ -8,6 +8,7 @@
 
 <script>
   import { mapGetters } from 'vuex'
+  import * as sugar from 'sugar'
 
   export default {
     name: 'post',
@@ -22,6 +23,10 @@
     },
     methods: {
       submit: function () {
+        if (sugar.String.isBlank(this.value)) {
+          return
+        }
+
         document.querySelector('#poem-post').classList.add('is-loading')
 
         this.$store.dispatch('poems/add', {contents: this.value})
