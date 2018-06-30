@@ -28,11 +28,17 @@ export const actions = {
       throw e
     }
   },
+
   async list(state) {
     let response = {}
 
     try {
       response = await axios.get(BASE_URL + '/poems')
+
+      response.data.forEach(element => {
+        element.contents = element.contents.replace(/ /g, '&nbsp;')
+        element.contents = element.contents.replace(/\n/g, '<br>')
+      })
 
       state.commit('update', response.data)
 

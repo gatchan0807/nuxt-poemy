@@ -2,14 +2,16 @@
   <section class="container">
     <ul>
       <li v-for="poem in poems" v-bind:key="poem.id">
-        {{poem.id}} / {{poem.contents}} / {{poem.timestamp}}
+        {{poem.id}} /
+        <span v-html="poem.contents"></span> /
+        {{poem.timestamp}}
       </li>
     </ul>
   </section>
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'index',
