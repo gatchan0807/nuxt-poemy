@@ -9,16 +9,24 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
+    name: 'index',
     computed: mapGetters({
       poems: 'poems/all'
     }),
-    name: 'index',
+    mounted: function () {
+      this.getPoems()
+    },
     data() {
       return {}
-    }
+    },
+    methods: {
+      ...mapActions({
+        getPoems: 'poems/list'
+      })
+    },
   }
 </script>
 

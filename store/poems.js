@@ -28,12 +28,29 @@ export const actions = {
       throw e
     }
   },
+  async list(state) {
+    let response = {}
+
+    try {
+      response = await axios.get(BASE_URL + '/poems')
+
+      state.commit('update', response.data)
+
+      return response.data
+    } catch (e) {
+      console.log(e)
+      throw e
+    }
+  }
 }
 
 export const mutations = {
   add(state, p) {
     state.list.push(p)
   },
+  update(state, poems) {
+    state.list = poems
+  }
 }
 
 export const getters = {
