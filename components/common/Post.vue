@@ -13,7 +13,6 @@
     computed: mapGetters({
       poems: 'poems/all'
     }),
-
     name: 'post',
     data() {
       return {
