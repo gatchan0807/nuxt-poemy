@@ -37,6 +37,8 @@ export const actions = {
 
       response.data.forEach(element => {
         element.contents = element.contents.replace(/ /g, '&nbsp;')
+        element.contents = element.contents.replace(/</g, '&lt;')
+        element.contents = element.contents.replace(/>/g, '&gt;')
         element.contents = element.contents.replace(/\n/g, '<br>')
       })
 
