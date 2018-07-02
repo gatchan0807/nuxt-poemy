@@ -2,9 +2,8 @@
   <section class="container">
     <ul>
       <li v-for="poem in poems" v-bind:key="poem.id">
-        {{poem.id}} /
-        <span v-html="poem.contents"></span> /
-        {{poem.timestamp}}
+        <p v-html="poem.contents" class="ellipsis"></p>
+        <button>もっと読む</button>
       </li>
     </ul>
   </section>
@@ -33,5 +32,19 @@
 </script>
 
 <style scoped>
+  li {
+    height: 8rem;
+    border-bottom: 1px solid #7f828b;
+  }
 
+  p {
+    height: 4.5rem;
+    overflow: hidden;
+  }
+
+  .ellipsis {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
 </style>
