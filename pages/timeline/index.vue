@@ -2,8 +2,7 @@
   <section class="container">
     <ul>
       <li v-for="poem in poems" v-bind:key="poem.id">
-        <p v-html="poem.contents" class="ellipsis"></p>
-        <button>もっと読む</button>
+        <poem :contents="poem.contents"></poem>
       </li>
     </ul>
   </section>
@@ -11,9 +10,13 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
+  import Poem from '~/components/timeline/Poem.vue'
 
   export default {
     name: 'index',
+    components: {
+      Poem
+    },
     computed: mapGetters({
       poems: 'poems/all'
     }),
@@ -26,7 +29,7 @@
     methods: {
       ...mapActions({
         getPoems: 'poems/list'
-      })
+      }),
     },
   }
 </script>
@@ -40,11 +43,5 @@
   p {
     height: 4.5rem;
     overflow: hidden;
-  }
-
-  .ellipsis {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
   }
 </style>
