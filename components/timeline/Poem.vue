@@ -1,7 +1,11 @@
 <template>
   <div>
-    <p v-html="contents" :class="{ellipsis: isEllipsis}"></p>
-    <button @click="expand">もっと読む</button>
+    <p v-html="escapedContents" v-if="lineFeedNumber < 4"></p>
+    <p v-html="escapedContents" v-if="lineFeedNumber > 4" :class="{ellipsis: isEllipsis}"></p>
+    <button v-if="lineFeedNumber > 4" @click="expand">
+      <span v-if="isEllipsis">もっと読む</span>
+      <span v-if="!isEllipsis">折りたたむ</span>
+    </button>
   </div>
 </template>
 
@@ -11,15 +15,29 @@
     props: {
       contents: String,
     },
+    computed: {
+      lineFeedNumber: function () {
+        return this.contents.split('\n').length
+      },
+      escapedContents: function () {
+        let contents = this.contents
+
+        contents = contents.replace(/ /g, '&nbsp;')
+        contents = contents.replace(/</g, '&lt;')
+        contents = contents.replace(/>/g, '&gt;')
+        contents = contents.replace(/\n/g, '<br>')
+
+        return contents
+      }
+    },
     methods: {
       expand: function () {
         this.isEllipsis = !this.isEllipsis
-        console.log(this.isEllipsis)
       }
     },
     data() {
       return {
-        isEllipsis: false
+        isEllipsis: true
       }
     }
   }
@@ -27,7 +45,8 @@
 
 <style scoped>
   .ellipsis {
-    height: 4rem;
+    height: 4.5rem;
+    overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;

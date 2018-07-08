@@ -36,7 +36,6 @@
 
 <style scoped>
   li {
-    height: 8rem;
     border-bottom: 1px solid #7f828b;
   }
 
