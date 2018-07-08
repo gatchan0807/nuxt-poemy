@@ -35,13 +35,6 @@ export const actions = {
     try {
       response = await axios.get(BASE_URL + '/poems')
 
-      response.data.forEach(element => {
-        element.contents = element.contents.replace(/ /g, '&nbsp;')
-        element.contents = element.contents.replace(/</g, '&lt;')
-        element.contents = element.contents.replace(/>/g, '&gt;')
-        element.contents = element.contents.replace(/\n/g, '<br>')
-      })
-
       state.commit('update', response.data)
 
       return response.data
