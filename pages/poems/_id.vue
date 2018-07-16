@@ -8,24 +8,18 @@
 
 <script>
   import axios from 'axios'
+  import { escapeContents } from '~/lib/modules/escapeContents'
 
   export default {
     name: 'poems-id',
-    computed: {
-      escapedContents: function () {
-        let contents = this.contents
-
-        contents = contents.replace(/ /g, '&nbsp;')
-        contents = contents.replace(/</g, '&lt;')
-        contents = contents.replace(/>/g, '&gt;')
-        contents = contents.replace(/\n/g, '<br>')
-
-        return contents
-      }
-    },
     async asyncData({params, error}) {
       const {data} = await axios.get(`http://localhost:3030/poems/${params.id}`)
       return data
+    },
+    computed: {
+      escapedContents: function () {
+        return escapeContents(this.contents)
+      }
     },
   }
 </script>

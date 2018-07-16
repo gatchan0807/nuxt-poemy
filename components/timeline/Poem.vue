@@ -11,6 +11,8 @@
 </template>
 
 <script>
+  import { escapeContents } from '~/lib/modules/escapeContents'
+
   export default {
     name: 'poem',
     props: {
@@ -22,14 +24,7 @@
         return this.contents.split('\n').length
       },
       escapedContents: function () {
-        let contents = this.contents
-
-        contents = contents.replace(/ /g, '&nbsp;')
-        contents = contents.replace(/</g, '&lt;')
-        contents = contents.replace(/>/g, '&gt;')
-        contents = contents.replace(/\n/g, '<br>')
-
-        return contents
+        return escapeContents(this.contents)
       }
     },
     methods: {
