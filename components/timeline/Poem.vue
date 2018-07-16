@@ -1,5 +1,6 @@
 <template>
   <div>
+    <nuxt-link :to="'/poems/' + poemId">詳細</nuxt-link>
     <p v-html="escapedContents" v-if="lineFeedNumber < 4"></p>
     <p v-html="escapedContents" v-if="lineFeedNumber > 4" :class="{ellipsis: isEllipsis}"></p>
     <button v-if="lineFeedNumber > 4" @click="expand">
@@ -14,6 +15,7 @@
     name: 'poem',
     props: {
       contents: String,
+      poemId: String,
     },
     computed: {
       lineFeedNumber: function () {

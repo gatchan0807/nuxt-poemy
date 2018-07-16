@@ -2,7 +2,7 @@
   <section class="container">
     <ul>
       <li v-for="poem in poems" v-bind:key="poem.id">
-        <poem :contents="poem.contents"></poem>
+        <poem :contents="poem.contents" :poemId="poem.id"></poem>
       </li>
     </ul>
   </section>
