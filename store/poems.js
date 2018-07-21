@@ -13,7 +13,7 @@ export const actions = {
     const p = {
       id: shortId.generate(),
       contents: poem.contents,
-      timestamp: Math.floor(moment().format('x') / 1000)
+      timestamp: moment().format('x')
     }
 
     state.commit('add', p)
