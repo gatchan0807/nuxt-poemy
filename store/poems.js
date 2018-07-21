@@ -35,7 +35,7 @@ export const actions = {
     try {
       response = await axios.get(BASE_URL + '/poems')
 
-      state.commit('update', response.data)
+      state.commit('update', response.data.reverse())
 
       return response.data
     } catch (e) {
@@ -47,7 +47,7 @@ export const actions = {
 
 export const mutations = {
   add(state, p) {
-    state.list.push(p)
+    state.list.unshift(p)
   },
   update(state, poems) {
     state.list = poems
