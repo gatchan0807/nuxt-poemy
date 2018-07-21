@@ -10,7 +10,7 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-  import Poem from '~/components/timeline/Poem.vue'
+  import Poem from '~/components/poem/Poem.vue'
 
   export default {
     name: 'index',
