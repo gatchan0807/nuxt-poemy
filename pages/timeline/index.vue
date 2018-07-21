@@ -1,8 +1,8 @@
 <template>
-  <section class="container">
-    <ul>
+  <section class="section">
+    <ul class="container">
       <li v-for="poem in poems" v-bind:key="poem.id">
-        <poem :contents="poem.contents" :poemId="poem.id"></poem>
+        <poem :contents="poem.contents" :poemId="poem.id" :timestamp="poem.timestamp"></poem>
       </li>
     </ul>
   </section>
@@ -34,13 +34,10 @@
   }
 </script>
 
-<style scoped>
-  li {
-    border-bottom: 1px solid #7f828b;
-  }
+<style scoped lang="scss">
+  @import "~assets/values";
 
-  p {
-    height: 4.5rem;
-    overflow: hidden;
+  section {
+    background-color: lighten($base-color, 55%);
   }
 </style>
