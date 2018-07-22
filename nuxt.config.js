@@ -54,6 +54,11 @@ module.exports = {
   */
   css: [
     // node.js module but we specify the pre-processor
-    {src: '~assets/main.scss', lang: 'scss'}
+    {src: '@fortawesome/fontawesome-free-webfonts'},
+    {src: '@fortawesome/fontawesome-free-webfonts/css/fa-brands.css'},
+    {src: '@fortawesome/fontawesome-free-webfonts/css/fa-regular.css'},
+    {src: '@fortawesome/fontawesome-free-webfonts/css/fa-solid.css'},
+    {src: '~assets/main.scss', lang: 'scss'},
+    {src: 'bulma/bulma.sass', lang: 'sass'},
   ],
 }
