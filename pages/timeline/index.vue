@@ -5,28 +5,20 @@
         <poem :contents="poem.contents" :poemId="poem.id" :timestamp="poem.timestamp"></poem>
       </li>
     </ul>
-    <div class="modal is-active" v-if="detailId !== ''">
-      <div class="modal-background"></div>
-      <div class="modal-card">
-        <div class="modal-card-head">
-          <button class="delete" @click="closeDetail"></button>
-        </div>
-        <div class="modal-card-body">
-          {{detailId}}
-        </div>
-      </div>
-    </div>
+    <detail-modal v-if="detailId !== ''"></detail-modal>
   </section>
 </template>
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
   import Poem from '~/components/poem/Poem.vue'
+  import DetailModal from '~/components/poem/DetailModal'
 
   export default {
     name: 'index',
     components: {
-      Poem
+      Poem,
+      DetailModal
     },
     computed: {
       ...mapGetters({
@@ -43,7 +35,6 @@
     methods: {
       ...mapActions({
         getPoems: 'poems/list',
-        closeDetail: 'poems/closeDetail'
       }),
     },
   }
