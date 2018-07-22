@@ -1,8 +1,8 @@
 <template>
   <div class="poem">
     <span class="posted-date">{{escapedPostedTime}}</span>
-    <p v-html="escapedContents" v-if="lineFeedNumber <= 4"></p>
-    <p v-html="escapedContents" v-if="lineFeedNumber > 4" :class="{ellipsis: isEllipsis}"></p>
+    <p v-html="escapedContents" v-if="!isNeedEllipsisContent"></p>
+    <p v-html="escapedContents" v-if="isNeedEllipsisContent" :class="{ellipsis: isEllipsis}"></p>
     <button @click="openDetail" class="detail-link">もっと読む</button>
   </div>
 </template>
@@ -19,8 +19,10 @@
       timestamp: String,
     },
     computed: {
-      lineFeedNumber: function () {
-        return this.contents.split('\n').length
+      isNeedEllipsisContent: function () {
+        return this.contents.split('\n').length > 4 ||
+          this.contents.length > 50 ||
+          this.contents.split('\n').length > 2 && this.contents.length > 30
       },
       escapedContents: function () {
         return escapeContents(this.contents)
