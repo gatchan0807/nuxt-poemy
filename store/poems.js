@@ -6,9 +6,17 @@ const BASE_URL = 'http://localhost:3030'
 
 export const state = () => ({
   list: [],
+  detailId: '',
 })
 
 export const actions = {
+  openDetail(state, poem) {
+    state.commit('setDetailId', poem.id)
+  },
+  closeDetail(state) {
+    state.commit('removeDetailId')
+  },
+
   async add(state, poem) {
     const p = {
       id: shortId.generate(),
@@ -28,7 +36,6 @@ export const actions = {
       throw e
     }
   },
-
   async list(state) {
     let response = {}
 
@@ -51,11 +58,20 @@ export const mutations = {
   },
   update(state, poems) {
     state.list = poems
+  },
+  setDetailId(state, id) {
+    state.detailId = id
+  },
+  removeDetailId(state) {
+    state.detailId = ''
   }
 }
 
 export const getters = {
   all: state => {
     return state.list
+  },
+  detail: state => {
+    return state.detailId
   }
 }

@@ -3,7 +3,7 @@
     <span class="posted-date">{{escapedPostedTime}}</span>
     <p v-html="escapedContents" v-if="lineFeedNumber <= 4"></p>
     <p v-html="escapedContents" v-if="lineFeedNumber > 4" :class="{ellipsis: isEllipsis}"></p>
-    <button class="detail-link">もっと読む</button>
+    <button @click="openDetail" class="detail-link">もっと読む</button>
   </div>
 </template>
 
@@ -30,8 +30,8 @@
       }
     },
     methods: {
-      expand: function () {
-        this.isEllipsis = !this.isEllipsis
+      openDetail: function () {
+        this.$store.dispatch('poems/openDetail', {id: this.poemId})
       }
     },
     data() {

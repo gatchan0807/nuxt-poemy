@@ -5,6 +5,17 @@
         <poem :contents="poem.contents" :poemId="poem.id" :timestamp="poem.timestamp"></poem>
       </li>
     </ul>
+    <div class="modal is-active" v-if="detailId !== ''">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <div class="modal-card-head">
+          <button class="delete" @click="closeDetail"></button>
+        </div>
+        <div class="modal-card-body">
+          {{detailId}}
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -17,9 +28,12 @@
     components: {
       Poem
     },
-    computed: mapGetters({
-      poems: 'poems/all'
-    }),
+    computed: {
+      ...mapGetters({
+        poems: 'poems/all',
+        detailId: 'poems/detail'
+      }),
+    },
     mounted: function () {
       this.getPoems()
     },
@@ -28,7 +42,8 @@
     },
     methods: {
       ...mapActions({
-        getPoems: 'poems/list'
+        getPoems: 'poems/list',
+        closeDetail: 'poems/closeDetail'
       }),
     },
   }
