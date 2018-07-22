@@ -7,7 +7,8 @@
         <button class="delete" aria-label="close" @click="closeDetail"></button>
       </header>
       <section class="modal-card-body">
-        <p v-html="escapedContents"></p>
+        <p v-if="detail.contents !== ''" v-html="escapedContents"></p>
+        <p v-if="detail.contents === ''" class="is-loading"></p>
       </section>
       <footer class="modal-card-foot">
         <p>
@@ -57,6 +58,21 @@
 <style scoped lang="scss">
   @import "~assets/values";
   @import "~bulma/bulma";
+
+  .is-loading {
+    padding: 6rem;
+    position: relative;
+    pointer-events: none;
+    &:after {
+      @include loader;
+      position: absolute;
+      top: calc(50% - 1.5rem);
+      left: calc(50% - 1.5rem);
+      width: 3rem;
+      height: 3rem;
+      border-width: 0.25em;
+    }
+  }
 
   .modal-card {
     border: 2px $base-color solid;
