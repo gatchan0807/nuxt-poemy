@@ -55,13 +55,16 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+  @import "~assets/values";
+  @import "~bulma/bulma";
+
   nav {
     position: fixed;
     left: 0;
     height: 100vh;
     width: 80vw;
-    background-color: white;
+    background-color: lighten($base-color, 55%);
     z-index: 10;
   }
 
