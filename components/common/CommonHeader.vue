@@ -2,12 +2,15 @@
   <nav class="navbar is-white">
     <div class="navbar-brand">
       <div class="navbar-end">
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+           @click="isOpenMenu = !isOpenMenu">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
+
+      <side-bar :isOpen="isOpenMenu" @close="isOpenMenu = !isOpenMenu"></side-bar>
 
       <div class="is-logo navbar-item">
         <nuxt-link to="/">
@@ -34,8 +37,18 @@
 </template>
 
 <script>
+  import SideBar from '~/components/common/SideBar'
+
   export default {
     name: 'common-header',
+    components: {
+      SideBar
+    },
+    data() {
+      return {
+        isOpenMenu: false
+      }
+    },
   }
 </script>
 
@@ -46,6 +59,7 @@
 
   .navbar-burger {
     width: 4rem;
+    z-index: 100;
   }
 
   .is-logo {
